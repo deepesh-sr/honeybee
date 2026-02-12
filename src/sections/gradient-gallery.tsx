@@ -580,7 +580,7 @@ function GradientCard({ gradient, index }: { gradient: Gradient; index: number }
             </span>
           </div>
           <motion.button onClick={copyGradient} className="absolute top-3 right-3 p-2 rounded-lg bg-black/50 backdrop-blur-sm text-white opacity-0 hover:opacity-100 transition-opacity" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-            {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+            {copied ? <Check className="w-4 h-4 text-[hsl(48,100%,50%)]" /> : <Copy className="w-4 h-4" />}
           </motion.button>
         </div>
         <div className="p-4">
@@ -591,7 +591,7 @@ function GradientCard({ gradient, index }: { gradient: Gradient; index: number }
             </motion.button>
           </div>
           <p className="text-sm text-muted-foreground mb-2">{gradient.description}</p>
-          <p className="text-xs text-linear">{gradient.usage}</p>
+          <p className="text-xs text-[hsl(48,100%,50%)]">{gradient.usage}</p>
           
           {showCode && (
             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} className="mt-3 overflow-hidden">
@@ -606,17 +606,17 @@ function GradientCard({ gradient, index }: { gradient: Gradient; index: number }
   );
 }
 
-export function GradientGallery() {
+export default function GradientGallery() {
   return (
     <section id="gradients" className="py-32 scroll-mt-20 relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-20">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} viewport={{ once: true }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/80 border border-border mb-6">
-            <Palette className="w-4 h-4 text-linear" />
-            <span className="text-sm font-medium text-muted-foreground"><ScrambleText text="50+ Ready-to-Use Gradients" delay={0.3} /></span>
+            <Palette className="w-4 h-4 text-[hsl(48,100%,50%)]" />
+            <span className="text-sm font-medium text-muted-foreground"><ScrambleText text="Copy-Paste Ready" delay={0.3} /></span>
           </motion.div>
-          <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">Gradient Gallery</h2>
+          <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">50 Gradient Styles</h2>
           <p className="text-muted-foreground text-xl max-w-3xl mx-auto leading-relaxed">Stunning gradients in 8 categories: Mesh, Aurora, Neon, Metallic, Glass, Organic, Brand & Abstract. All copy-paste ready.</p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

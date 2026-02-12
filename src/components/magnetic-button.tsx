@@ -70,7 +70,7 @@ export function MagneticButton({
       <motion.div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
-          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(94, 106, 210, 0.3), transparent 50%)',
+          background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 184, 0, 0.3), transparent 50%)',
         }}
       />
       <span className="relative z-10">{children}</span>
