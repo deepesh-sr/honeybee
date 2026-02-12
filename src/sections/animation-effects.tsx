@@ -706,7 +706,10 @@ function AnimationCard({ demo, index }: { demo: AnimationDemo; index: number }) 
 
 export default function AnimationEffects() {
   return (
-    <section id="animations" className="py-32 scroll-mt-20 relative">
+    <section 
+      id="animations"
+      className="py-32 relative overflow-hidden"
+    >
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-20">
