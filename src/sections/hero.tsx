@@ -53,7 +53,7 @@ export function Hero() {
       >
         <div className="text-center max-w-5xl mx-auto">
           {/* Badge */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -63,7 +63,7 @@ export function Hero() {
               <Hexagon className="w-4 h-4 text-honey" />
             </motion.div>
             <span className="text-sm font-medium text-muted-foreground">60+ Animations • 50+ Gradients • 50+ Fonts</span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Main headline */}
           <motion.h1

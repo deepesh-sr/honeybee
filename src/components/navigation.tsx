@@ -33,11 +33,13 @@ export function Navigation() {
       >
         <div className={cn(
           'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 transition-all duration-500',
-          isScrolled && 'bg-background/80 backdrop-blur-2xl border border-honey/20 rounded-2xl shadow-2xl shadow-honey/5 mx-4 sm:mx-6 lg:mx-8 mt-2'
-        )}>
+          isScrolled && 'bg-background/80 backdrop-blur-2xl border border-honey/20 rounded-2xl shadow-2xl shadow-honey/5 mt-2'
+        )}
+        style={isScrolled ? { width: 'calc(100% - 2rem)', maxWidth: '80rem' } : { width: '100%' }}
+        >
           <nav className="flex h-14 items-center justify-between">
             <motion.a href="#" className="flex items-center gap-3 group" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <motion.div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-honey to-gold text-bee-black shadow-lg shadow-honey/25"
+              <motion.div className="flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-br from-honey to-gold text-bee-black shadow-lg shadow-honey/25"
                 animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
                 <Hexagon className="w-6 h-6" strokeWidth={2.5} />
               </motion.div>
