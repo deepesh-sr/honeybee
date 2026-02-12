@@ -566,7 +566,10 @@ export default function FontShowcase() {
   };
 
   return (
-    <section id="font-showcase" className="relative py-24 overflow-hidden">
+    <section 
+      id="fonts"
+      className="py-24 relative overflow-hidden"
+    >
       {/* Background */}
       <div className="absolute inset-0 honeycomb-pattern opacity-30" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-honey/5 to-transparent" />
