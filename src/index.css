@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:wght@400;700&display=swap');
 
 @import "tailwindcss";
 
 @theme {
-  /* Font Families */
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  /* Font Families - New fonts: Outfit, DM Sans, Space Mono */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", "Fira Code", monospace;
 
   /* Theme Colors mapped to HSL variables */
   --color-background: hsl(var(--background));
@@ -29,15 +29,17 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  /* Brand Colors */
-  --color-linear: #5E6AD2;
-  --color-linear-light: #7B82E1;
-  --color-linear-dark: #4B55B8;
-  
-  --color-vercel: #000000;
-  --color-vercel-light: #ffffff;
-  --color-vercel-dark: #000000;
-  --color-vercel-gray: #666666;
+  /* Honeybee Brand Colors */
+  --color-honey: #FFB800;
+  --color-honey-light: #FFD54F;
+  --color-honey-dark: #F9A825;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F4D03F;
+  --color-gold-dark: #B8860B;
+  --color-bee-black: #1A1A1A;
+  --color-bee-dark: #2D2D2D;
+  --color-wax: #FFF8E1;
+  --color-hive: #3E2723;
 
   /* Border Radius */
   --radius-lg: var(--radius);
@@ -54,6 +56,7 @@
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-bounce-slow: bounce-slow 3s ease-in-out infinite;
   --animate-spin-slow: spin-slow 8s linear infinite;
+  --animate-buzz: buzz 0.3s ease-in-out infinite;
 
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -72,8 +75,8 @@
     50% { transform: translateY(-20px); }
   }
   @keyframes glow {
-    from { box-shadow: 0 0 20px rgba(94, 106, 210, 0.3); }
-    to { box-shadow: 0 0 40px rgba(94, 106, 210, 0.6); }
+    from { box-shadow: 0 0 20px rgba(255, 184, 0, 0.3); }
+    to { box-shadow: 0 0 40px rgba(255, 184, 0, 0.6); }
   }
   @keyframes shimmer {
     0% { background-position: -200% 0; }
@@ -92,52 +95,57 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
+  @keyframes buzz {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px) rotate(-1deg); }
+    75% { transform: translateX(2px) rotate(1deg); }
+  }
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --background: 48 100% 96%;
+    --foreground: 30 10% 10%;
+    --card: 48 100% 98%;
+    --card-foreground: 30 10% 10%;
+    --popover: 48 100% 98%;
+    --popover-foreground: 30 10% 10%;
+    --primary: 45 100% 50%;
+    --primary-foreground: 30 10% 10%;
+    --secondary: 45 50% 90%;
+    --secondary-foreground: 30 10% 10%;
+    --muted: 45 30% 90%;
+    --muted-foreground: 30 10% 40%;
+    --accent: 45 100% 50%;
+    --accent-foreground: 30 10% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --border: 45 30% 80%;
+    --input: 45 30% 80%;
+    --ring: 45 100% 50%;
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 30 10% 8%;
+    --foreground: 45 100% 90%;
+    --card: 30 10% 10%;
+    --card-foreground: 45 100% 90%;
+    --popover: 30 10% 10%;
+    --popover-foreground: 45 100% 90%;
+    --primary: 45 100% 50%;
+    --primary-foreground: 30 10% 10%;
+    --secondary: 30 10% 15%;
+    --secondary-foreground: 45 100% 90%;
+    --muted: 30 10% 15%;
+    --muted-foreground: 45 30% 60%;
+    --accent: 45 100% 50%;
+    --accent-foreground: 30 10% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 30 10% 20%;
+    --input: 30 10% 20%;
+    --ring: 45 100% 50%;
   }
 }
 
@@ -146,16 +154,9 @@
     border-color: var(--color-border, currentColor);
   }
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    @apply font-sans antialiased;
-  }
-  
-  /* Hide default cursor on desktop */
-  @media (hover: hover) and (pointer: fine) {
-    * {
-      cursor: none !important;
-    }
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    @apply font-sans antialiased min-h-screen relative;
   }
   
   /* Smooth scroll */
@@ -163,9 +164,9 @@
     scroll-behavior: smooth;
   }
   
-  /* Selection color */
+  /* Selection color - honey theme */
   ::selection {
-    background-color: rgba(94, 106, 210, 0.3);
+    background-color: rgba(255, 184, 0, 0.3);
     color: inherit;
   }
 }
@@ -176,38 +177,31 @@
   }
   
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-linear via-purple-500 to-pink-500;
+    @apply bg-clip-text text-transparent bg-linear-to-r from-honey via-gold to-honey-light;
   }
   
-  .gradient-text-animated {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, #5E6AD2, #8B5CF6, #EC4899, #5E6AD2);
-    background-size: 300% 100%;
-    animation: gradient-shift 3s ease infinite;
+  .honey-glow {
+    @apply bg-wax/80 dark:bg-bee-black/80 backdrop-blur-xl;
   }
   
-  .glass {
-    @apply bg-white/80 dark:bg-black/80 backdrop-blur-xl;
+  .honey-glow-border {
+    @apply border border-honey/20 dark:border-honey/10;
   }
   
-  .glass-border {
-    @apply border border-white/20 dark:border-white/10;
-  }
-  
-  .glass-strong {
-    @apply bg-white/10 dark:bg-black/40 backdrop-blur-2xl;
+  .honey-glow-strong {
+    @apply bg-wax/10 dark:bg-bee-dark/40 backdrop-blur-2xl;
   }
   
   .glow-effect {
-    box-shadow: 0 0 20px rgba(94, 106, 210, 0.3), 0 0 40px rgba(94, 106, 210, 0.1);
+    box-shadow: 0 0 20px rgba(255, 184, 0, 0.3), 0 0 40px rgba(255, 184, 0, 0.1);
   }
   
   .glow-effect-strong {
-    box-shadow: 0 0 30px rgba(94, 106, 210, 0.4), 0 0 60px rgba(94, 106, 210, 0.2), 0 0 90px rgba(94, 106, 210, 0.1);
+    box-shadow: 0 0 30px rgba(255, 184, 0, 0.4), 0 0 60px rgba(255, 184, 0, 0.2), 0 0 90px rgba(255, 184, 0, 0.1);
   }
   
   .text-glow {
-    text-shadow: 0 0 20px rgba(94, 106, 210, 0.5), 0 0 40px rgba(94, 106, 210, 0.3);
+    text-shadow: 0 0 20px rgba(255, 184, 0, 0.5), 0 0 40px rgba(255, 184, 0, 0.3);
   }
   
   .animate-float {
@@ -219,7 +213,7 @@
   }
   
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,184,0,0.1), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s linear infinite;
   }
@@ -227,6 +221,10 @@
   .animate-gradient {
     background-size: 300% 100%;
     animation: gradient-shift 5s ease infinite;
+  }
+  
+  .animate-buzz {
+    animation: buzz 0.3s ease-in-out infinite;
   }
   
   /* Hover lift effect */
@@ -237,56 +235,23 @@
     @apply -translate-y-1;
   }
   
-  /* Magnetic button base */
-  .magnetic-wrap {
-    @apply inline-block;
-  }
-  
-  /* Shimmer border effect */
-  .shimmer-border {
-    position: relative;
-    overflow: hidden;
-  }
-  .shimmer-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    border-radius: inherit;
-    background: linear-gradient(90deg, transparent, rgba(94, 106, 210, 0.5), transparent);
-    background-size: 200% 100%;
-    animation: shimmer 2s linear infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-  }
-  
-  /* Noise texture overlay */
-  .noise-overlay {
-    position: relative;
-  }
-  .noise-overlay::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    pointer-events: none;
-    mix-blend-mode: overlay;
-  }
-  
-  /* Grid pattern */
+  /* Grid pattern - honey color */
   .grid-pattern {
     background-image: 
-      linear-gradient(rgba(94, 106, 210, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(94, 106, 210, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(255, 184, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 184, 0, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
   }
   
   /* Dot pattern */
   .dot-pattern {
-    background-image: radial-gradient(rgba(94, 106, 210, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 184, 0, 0.15) 1px, transparent 1px);
     background-size: 20px 20px;
+  }
+  
+  /* Honeycomb pattern */
+  .honeycomb-pattern {
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23FFB800' fill-opacity='0.05'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-7.5L27.99 34H28v2.31h-.01L17 42.65V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 }

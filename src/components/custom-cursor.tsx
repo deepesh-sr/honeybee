@@ -91,7 +91,7 @@ export function CustomCursor() {
           style={{
             width: 8,
             height: 8,
-            backgroundColor: '#5E6AD2',
+            backgroundColor: '#D4AF37',
             borderRadius: '50%',
           }}
         />
@@ -113,8 +113,8 @@ export function CustomCursor() {
         transition={{ type: "spring", damping: 20, stiffness: 300 }}
       >
         <div 
-          className={`w-full h-full rounded-full border-2 border-[#5E6AD2] transition-all duration-200 ${
-            isHovering ? 'bg-[#5E6AD2]/20' : 'bg-transparent'
+          className={`w-full h-full rounded-full border-2 border-[#FFB800] transition-all duration-200 ${
+            isHovering ? 'bg-[#FFB800]/20' : 'bg-transparent'
           }`}
         />
       </motion.div>
@@ -129,7 +129,7 @@ export function CustomCursor() {
           translateY: '-50%',
         }}
       >
-        <div className="w-2 h-2 bg-[#5E6AD2] rounded-full" />
+        <div className="w-2 h-2 bg-[#FFB800] rounded-full" />
       </motion.div>
     </>
   );

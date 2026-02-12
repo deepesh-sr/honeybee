@@ -1,8 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Sparkles, Bot, Zap, Palette, Code, ChevronDown } from 'lucide-react';
+import { ArrowRight, Hexagon, Zap, Palette, Type, ChevronDown } from 'lucide-react';
 import { useRef } from 'react';
-import { MagneticButton } from '../components/magnetic-button';
-import { TextReveal, ScrambleText } from '../components/text-reveal';
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -20,30 +18,32 @@ export function Hero() {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-50" />
+      {/* Background */}
+      <div className="absolute inset-0 honeycomb-pattern opacity-30" />
       
-      {/* Animated gradient orbs in background */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Animated gradient orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute w-[800px] h-[800px] rounded-full"
+          className="absolute w-[600px] h-[600px] rounded-full opacity-20"
           style={{
-            background: 'radial-gradient(circle, rgba(94, 106, 210, 0.15) 0%, transparent 60%)',
-            filter: 'blur(80px)',
-            top: '50%',
-            left: '50%',
-            x: '-50%',
-            y: '-50%',
+            background: 'radial-gradient(circle, rgba(255, 184, 0, 0.4) 0%, transparent 60%)',
+            filter: 'blur(60px)',
+            top: '20%',
+            right: '-10%',
           }}
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
+          animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute w-[500px] h-[500px] rounded-full opacity-15"
+          style={{
+            background: 'radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 60%)',
+            filter: 'blur(60px)',
+            bottom: '10%',
+            left: '-5%',
           }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          animate={{ scale: [1, 1.3, 1], x: [0, 50, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
@@ -57,17 +57,12 @@ export function Hero() {
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary/80 backdrop-blur-sm border border-border mb-10 hover:border-linear/50 transition-colors group"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary/80 backdrop-blur-sm border border-honey/30 mb-10"
           >
-            <motion.div
-              animate={{ rotate: [0, 15, -15, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-            >
-              <Sparkles className="w-4 h-4 text-linear group-hover:text-purple-400 transition-colors" />
+            <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}>
+              <Hexagon className="w-4 h-4 text-honey" />
             </motion.div>
-            <span className="text-sm font-medium text-muted-foreground">
-              <ScrambleText text="Copy-Paste Design System" delay={0.5} />
-            </span>
+            <span className="text-sm font-medium text-muted-foreground">60+ Animations • 50+ Gradients • 50+ Fonts</span>
           </motion.div>
 
           {/* Main headline */}
@@ -77,20 +72,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight mb-8 leading-[0.9]"
           >
-            <span className="block mb-2">
-              <TextReveal text="Animations" delay={0.2} duration={0.04} />
-            </span>
-            <span className="block gradient-text-animated">
-              <TextReveal text="& Gradients" delay={0.5} duration={0.04} />
-            </span>
-            <motion.span 
-              className="block text-muted-foreground/50"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
-              <TextReveal text="for AI Agents" delay={0.8} duration={0.04} />
-            </motion.span>
+            <span className="block mb-2 text-foreground">honeybee</span>
+            <span className="block gradient-text-animated">designs.</span>
           </motion.h1>
 
           {/* Description */}
@@ -100,9 +83,9 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            Jaw-dropping animations and innovative gradients, all copy-paste ready. 
-            Built for developers and designed for{' '}
-            <span className="text-foreground font-medium">AI agents</span>.
+            A curated collection of animations, gradients, and typography. 
+            Everything you need to build{' '}
+            <span className="text-foreground font-medium">stunning interfaces</span>.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -112,32 +95,30 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
-            <MagneticButton
+            <motion.a
               href="#animations"
-              className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-foreground text-background font-semibold text-lg overflow-hidden transition-all hover:shadow-2xl hover:shadow-linear/20"
-              strength={0.2}
+              className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-honey text-bee-black font-bold text-lg overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-linear via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <span className="relative z-10 flex items-center gap-3">
                 <Zap className="w-5 h-5" />
                 Explore Animations
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
+                <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
                   <ArrowRight className="w-5 h-5" />
                 </motion.span>
               </span>
-            </MagneticButton>
+            </motion.a>
             
-            <MagneticButton
+            <motion.a
               href="#gradients"
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-secondary text-foreground font-semibold text-lg border border-border hover:border-linear/50 transition-all hover:bg-secondary/80"
-              strength={0.2}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-secondary text-foreground font-bold text-lg border border-honey/30 hover:bg-honey/10 transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <Palette className="w-5 h-5" />
               View Gradients
-            </MagneticButton>
+            </motion.a>
           </motion.div>
 
           {/* Feature pills */}
@@ -148,20 +129,20 @@ export function Hero() {
             className="flex flex-wrap items-center justify-center gap-4"
           >
             {[
-              { icon: Code, text: 'Copy-Paste Ready', delay: 0 },
-              { icon: Zap, text: 'Framer Motion', delay: 0.1 },
-              { icon: Palette, text: 'Innovative Gradients', delay: 0.2 },
-              { icon: Bot, text: 'AI Agent API', delay: 0.3 },
+              { icon: Zap, text: '60+ Animations' },
+              { icon: Palette, text: '50+ Gradients' },
+              { icon: Type, text: '50+ Fonts' },
+              { icon: Hexagon, text: 'Copy-Paste Ready' },
             ].map((feature) => (
               <motion.div
                 key={feature.text}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.7 + feature.delay, duration: 0.4 }}
+                transition={{ delay: 0.7, duration: 0.4 }}
                 whileHover={{ scale: 1.05, y: -2 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border/50 backdrop-blur-sm"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-honey/20 backdrop-blur-sm"
               >
-                <feature.icon className="w-4 h-4 text-linear" />
+                <feature.icon className="w-4 h-4 text-honey" />
                 <span className="text-sm font-medium">{feature.text}</span>
               </motion.div>
             ))}
@@ -172,13 +153,12 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
+            className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-8 max-w-2xl mx-auto"
           >
             {[
-              { value: '10+', label: 'Animations' },
-              { value: '10+', label: 'Gradients' },
-              { value: '100%', label: 'TypeScript' },
-              { value: '∞', label: 'Possibilities' },
+              { value: '60+', label: 'Animations' },
+              { value: '50+', label: 'Gradients' },
+              { value: '50+', label: 'Fonts' },
             ].map((stat, statIndex) => (
               <motion.div
                 key={stat.label}
@@ -187,9 +167,7 @@ export function Hero() {
                 transition={{ delay: 0.9 + statIndex * 0.1 }}
                 className="text-center"
               >
-                <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">
-                  {stat.value}
-                </div>
+                <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
